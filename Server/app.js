@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connection } from './database/connection.js';
+import errorMiddleware from './middleware/errorMiddleware.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors(corsOption));
 app.use(cookieParser);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(errorMiddleware);
 
 // Database Connection
 connection();
