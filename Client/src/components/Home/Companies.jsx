@@ -8,27 +8,27 @@ const Companies = () => {
       const companies = [
     {
       name: "Google",
-      logo: "https://cdn.pixabay.com/photo/2015/12/11/11/43/google-1088004_1280.png",
+      logo: "/images/google.webp",
     },
     {
       name: "Microsoft",
-      logo: "https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80660_1280.png",
+      logo: "/images/microsoft.webp",
     },
     {
       name: "Amazon",
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFkkQhwA-14yQus_rij6VonTP5UT7IrorBkg&s",
+      logo: "/images/amazon.png",
     },
     {
       name: "Apple",
-      logo: "https://cdn.pixabay.com/photo/2022/08/24/23/12/apple-7408883_1280.png",
+      logo: "/images/apple.png",
     },
     {
       name: "Netflix",
-      logo: "https://cdn.pixabay.com/photo/2022/08/24/20/20/netflix-7408710_1280.png",
+      logo: "/images/netflix.png",
     },
     {
       name: "Tesla",
-      logo: "https://cdn.pixabay.com/photo/2022/08/25/00/32/tesla-logo-7408969_1280.png",
+      logo: "/images/tesla.png",
     },
   ];
 

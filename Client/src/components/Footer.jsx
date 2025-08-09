@@ -25,7 +25,7 @@ const Footer = () => {
                   isDarkMode ? 'text-white' : 'text-slate-900'
                 }`}
               >
-                JobPortal
+                CareerOrbit
               </span>
             </div>
             <p
@@ -127,7 +127,7 @@ const Footer = () => {
             >
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span>support@jobportal.com</span>
+                <span>support@careerorbit.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
@@ -135,7 +135,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                <span>New York, NY 10001</span>
+                <span>India, Odisha</span>
               </div>
             </div>
           </div>

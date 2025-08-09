@@ -1,4 +1,3 @@
-// components/Navbar.js
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -45,7 +44,7 @@ const Navbar = () => {
                   isDarkMode ? 'from-white to-slate-300' : 'from-slate-800 to-slate-600'
                 } bg-clip-text text-transparent`}
               >
-                JobPortal
+                CareerOrbit
               </span>
             </Link>
           </div>
@@ -90,7 +89,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-3">
             <button
               onClick={handleThemeToggle}
-              className={`p-2.5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 group
+              className={`p-2.5 rounded-xl transition-all duration-200 focus:outline-none lg:focus:ring-2 focus:ring-offset-2 group
                 ${
                   isDarkMode
                     ? 'bg-slate-800 hover:bg-slate-700 text-amber-400 focus:ring-amber-400/50 hover:shadow-lg hover:shadow-amber-400/20'
@@ -109,7 +108,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className={`p-2.5 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+                className={`p-2.5 rounded-xl transition-all duration-200 focus:outline-none lg:focus:ring-2 focus:ring-offset-2
                   ${
                     isDarkMode
                       ? 'bg-slate-800 hover:bg-slate-700 text-white focus:ring-emerald-400/50'
