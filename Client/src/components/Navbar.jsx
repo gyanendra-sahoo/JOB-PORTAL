@@ -3,14 +3,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Briefcase, Sun, Moon, Menu, X } from 'lucide-react';
 import { toggleTheme } from '../redux/slices/themeSlice.js';
+// Import the logoutUser async thunk
+import { logoutUser } from '../redux/slices/authSlice.js'; 
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isDarkMode } = useSelector((state) => state.theme);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleThemeToggle = () => {
     dispatch(toggleTheme());
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    setIsMobileMenuOpen(false); // Close mobile menu after logout
   };
 
   const toggleMobileMenu = () => {
@@ -64,25 +72,34 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* Login/Signup buttons */}
-            <div className="flex items-center space-x-4">
-              <Link
-                to="/login"
-                className={`text-base font-medium px-4 py-2 rounded-lg border transition-colors duration-200 ${
-                  isDarkMode
-                    ? 'border-emerald-500 text-emerald-400 hover:bg-emerald-500/20'
-                    : 'border-emerald-600 text-emerald-600 hover:bg-emerald-600/10'
-                }`}
+            {/* Conditional Buttons */}
+            {isAuthenticated ? (
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
               >
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="bg-emerald-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200"
-              >
-                Signup
-              </Link>
-            </div>
+                Logout
+              </button>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  to="/login"
+                  className={`text-base font-medium px-4 py-2 rounded-lg border transition-colors duration-200 ${
+                    isDarkMode
+                      ? 'border-emerald-500 text-emerald-400 hover:bg-emerald-500/20'
+                      : 'border-emerald-600 text-emerald-600 hover:bg-emerald-600/10'
+                  }`}
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="bg-emerald-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200"
+                >
+                  Signup
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Theme Toggle & Mobile Menu */}
@@ -159,26 +176,37 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {/* Mobile Login/Signup buttons */}
+              {/* Mobile Conditional Buttons */}
               <div className="mt-4 flex flex-col space-y-3 px-4">
-                <Link
-                  to="/login"
-                  onClick={toggleMobileMenu}
-                  className={`block text-center text-base font-medium px-4 py-3 rounded-lg border transition-colors duration-200 ${
-                    isDarkMode
-                      ? 'border-emerald-500 text-emerald-400 hover:bg-emerald-500/20'
-                      : 'border-emerald-600 text-emerald-600 hover:bg-emerald-600/10'
-                  }`}
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  onClick={toggleMobileMenu}
-                  className="block text-center bg-emerald-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200"
-                >
-                  Signup
-                </Link>
+                {isAuthenticated ? (
+                  <button
+                    onClick={handleLogout}
+                    className="block text-center bg-red-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={toggleMobileMenu}
+                      className={`block text-center text-base font-medium px-4 py-3 rounded-lg border transition-colors duration-200 ${
+                        isDarkMode
+                          ? 'border-emerald-500 text-emerald-400 hover:bg-emerald-500/20'
+                          : 'border-emerald-600 text-emerald-600 hover:bg-emerald-600/10'
+                      }`}
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/signup"
+                      onClick={toggleMobileMenu}
+                      className="block text-center bg-emerald-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200"
+                    >
+                      Signup
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
