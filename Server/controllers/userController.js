@@ -37,6 +37,8 @@ const registerUser = AsyncHandler(async (req, res, next) => {
     fourthNiche,
     coverLetter,
   } = req.body;
+
+
   // Validate required fields
   if (!name || !email || !phone || !password || !address || !role) {
     return next(

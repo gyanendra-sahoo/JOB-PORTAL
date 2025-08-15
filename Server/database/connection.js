@@ -7,7 +7,7 @@ const connection = async () => {
     });
     console.log(`Database Connected Successfully`);
   } catch (error) {
-    console.log(`Mongoose Error ${err.message}`);
+    console.log(`Mongoose Error ${error.message}`);
     process.exit(1);
   }
 };

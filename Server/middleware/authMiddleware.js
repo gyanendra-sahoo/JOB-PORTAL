@@ -6,7 +6,6 @@ import { User } from "../models/userSchema.js";
 const verifyToken = AsyncHandler(async (req, res, next) => {
   try {
     const token = req.cookies?.token || req.headers.authorization?.replace("Bearer ", "");
-    console.log("Token received for verification:", token);
     if (!token) {
       return next(
         new ApiError({
