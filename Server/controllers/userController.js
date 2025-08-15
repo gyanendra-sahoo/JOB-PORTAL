@@ -203,8 +203,11 @@ const updateUser = AsyncHandler(async (req, res, next) => {
       firstNiche: req.body.firstNiche,
       secondNiche: req.body.secondNiche,
       thirdNiche: req.body.thirdNiche,
-      fourthNiche: req.body.fourthNiche,
+      fourthNiche: req.body.fourthNiche
     },
+    bio: req.body.bio,
+    skills: req.body.skills,
+    experience: req.body.experience,
   };
 
   const { firstNiche, secondNiche, thirdNiche, fourthNiche } = newData.niches;
