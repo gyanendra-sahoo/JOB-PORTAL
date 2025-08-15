@@ -10,7 +10,7 @@ const Login = () => {
   const { isDarkMode } = useSelector((state) => state.theme);
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.auth
-  ); // Access loading and error from auth slice
+  );
 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/"); 
+      navigate("/");
     }
   }, [isAuthenticated, navigate]);
 
@@ -64,7 +64,7 @@ const Login = () => {
     if (Object.keys(validationErrors).length > 0) {
       setFormErrors(validationErrors);
       return;
-    } // Dispatch the loginUser thunk from Redux
+    }
 
     dispatch(loginUser({ email: formData.email, password: formData.password }));
   };
@@ -117,9 +117,9 @@ const Login = () => {
       <div className="max-w-md w-full mx-auto relative z-10">
                {" "}
         <div className="text-center">
-                   {" "}
+          {" "}
           <div className="flex justify-center ">
-                       {" "}
+            {" "}
             <div className="relative">
                             <Briefcase className="h-12 w-12 text-emerald-500" />
                            {" "}
@@ -198,11 +198,11 @@ const Login = () => {
                                     {formErrors.email}               {" "}
                 </p>
               )}
-                         {" "}
+              {" "}
             </div>
-                                    {/* Password Field */}           {" "}
+          {/* Password Field */}{" "}
             <div>
-                           {" "}
+              {" "}
               <label
                 htmlFor="password"
                 className={`block text-sm font-medium mb-2 ${
@@ -286,7 +286,7 @@ const Login = () => {
                     isDarkMode ? "text-slate-300" : "text-slate-700"
                   }`}
                 >
-                                    Remember me                {" "}
+                                    Remember me{" "}
                 </label>
                              {" "}
               </div>

@@ -1,6 +1,8 @@
 import AsyncHandler from "../utils/AsyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import { User } from "../models/userSchema.js";
+import cloudinary from "../utils/cloudinary.js";
+import fs from "fs";
 
 const TokenGeneration = async (userId) => {
   try {
@@ -180,4 +182,92 @@ const logoutUser = AsyncHandler(async (req, res, next) => {
   });
 });
 
-export { registerUser, loginUser, logoutUser };
+const getUser = AsyncHandler(async (req, res, next) => {
+  const user = req.user;
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});
+
+const updateUser = AsyncHandler(async (req, res, next) => {
+  const newData = {
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    address: req.body.address,
+    coverLetter: req.body.coverLetter,
+    niches: {
+      firstNiche: req.body.firstNiche,
+      secondNiche: req.body.secondNiche,
+      thirdNiche: req.body.thirdNiche,
+      fourthNiche: req.body.fourthNiche,
+    },
+  };
+
+  const { firstNiche, secondNiche, thirdNiche, fourthNiche } = newData.niches;
+
+  if (
+    req.user.role === "candidate" &&
+    (!firstNiche || !secondNiche || !thirdNiche || !fourthNiche)
+  ) {
+    return next(
+      new ApiError({
+        message: "Provide your preferred job niches.",
+        statusCode: 400,
+      })
+    );
+  }
+
+  if (req.files && req.files.resume) {
+    const resume = req.files.resume;
+    if (!resume) {
+      return next(
+        new ApiError({
+          message: "Resume file is required.",
+          statusCode: 400,
+        })
+      );
+    }
+
+    if (req.user.resume && req.user.resume?.public_id) {
+      await cloudinary.uploader.destroy(req.user.resume.public_id);
+    }
+    const newResume = await cloudinary.uploader.upload(resume.tempFilePath, {
+      folder: "resumes",
+      resource_type: "auto",
+    });
+    newData.resume = {
+      public_id: newResume.public_id,
+      secure_url: newResume.secure_url,
+    };
+
+    fs.unlinkSync(req.file.path);
+  }
+
+  const userId = req.user._id;
+
+  const user = await User.findByIdAndUpdate(userId, newData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "User updated successfully.",
+    user: {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      coverLetter: user.coverLetter,
+      niches: user.niches,
+      resume: user.resume || null,
+      role: user.role,
+    },
+  });
+});
+
+export { registerUser, loginUser, logoutUser, getUser, updateUser };
