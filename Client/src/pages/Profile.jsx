@@ -12,6 +12,7 @@ import {
   X,
   Plus,
   Trash2,
+  Settings,
 } from "lucide-react";
 import api from "../services/api";
 
@@ -24,6 +25,11 @@ const Profile = () => {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -243,6 +249,20 @@ const Profile = () => {
               } backdrop-blur-sm`}
             >
               <User className="h-16 w-16 text-emerald-500" />
+            </div>
+
+            <div className="absolute top-0 left-0">
+              <button
+                onClick={() => setShowPasswordModal(true)}
+                className={`p-3 rounded-full transition-all duration-200 ${
+                  isDarkMode
+                    ? "bg-slate-700 hover:bg-slate-600"
+                    : "bg-slate-200 hover:bg-slate-300"
+                } text-slate-500 shadow-lg hover:shadow-xl transform hover:scale-105`}
+                title="Change Password"
+              >
+                <Settings className="h-5 w-5" />
+              </button>
             </div>
           </div>
 
@@ -729,6 +749,85 @@ const Profile = () => {
           </section>
         </form>
       </main>
+      {showPasswordModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div
+            className={`p-6 rounded-2xl shadow-xl w-full max-w-md ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-200"
+                : "bg-white text-slate-800"
+            }`}
+          >
+            <h2 className="text-xl font-bold mb-4">Change Password</h2>
+
+            <input
+              type="password"
+              placeholder="Old Password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+              className="w-full mb-3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+
+            <input
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-full mb-3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full mb-3 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
+
+            {passwordMessage && (
+              <p className="text-sm mb-3 text-center text-emerald-500">
+                {passwordMessage}
+              </p>
+            )}
+
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => setShowPasswordModal(false)}
+                className="px-4 py-2 rounded-lg bg-gray-400 text-white hover:bg-gray-500"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={async () => {
+                  try {
+                    const res = await api.put(
+                      "/api/user/update/password",
+                      { oldPassword, newPassword, confirmPassword },
+                      {
+                        headers: { Authorization: `Bearer ${token}` },
+                        withCredentials: true,
+                      }
+                    );
+                    setPasswordMessage(res.data.message);
+                    setOldPassword("");
+                    setNewPassword("");
+                    setConfirmPassword("");
+                    setTimeout(() => setShowPasswordModal(false), 1500);
+                  } catch (err) {
+                    setPasswordMessage(
+                      err.response?.data?.message ||
+                        "Failed to update password."
+                    );
+                  }
+                }}
+                className="px-4 py-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

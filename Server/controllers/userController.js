@@ -38,7 +38,6 @@ const registerUser = AsyncHandler(async (req, res, next) => {
     coverLetter,
   } = req.body;
 
-
   // Validate required fields
   if (!name || !email || !phone || !password || !address || !role) {
     return next(
@@ -203,7 +202,7 @@ const updateUser = AsyncHandler(async (req, res, next) => {
       firstNiche: req.body.firstNiche,
       secondNiche: req.body.secondNiche,
       thirdNiche: req.body.thirdNiche,
-      fourthNiche: req.body.fourthNiche
+      fourthNiche: req.body.fourthNiche,
     },
     bio: req.body.bio,
     skills: req.body.skills,
@@ -275,4 +274,52 @@ const updateUser = AsyncHandler(async (req, res, next) => {
   });
 });
 
-export { registerUser, loginUser, logoutUser, getUser, updateUser };
+const updatePassword = AsyncHandler(async (req, res, next) => {
+  const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    return next(
+      new ApiError({
+        message: "Old and new passwords are required.",
+        statusCode: 400,
+      })
+    );
+  }
+
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    return next(
+      new ApiError({
+        message: "User not found.",
+        statusCode: 404,
+      })
+    );
+  }
+
+  const isMatch = await user.comparePassword(oldPassword);
+  if (!isMatch) {
+    return next(
+      new ApiError({
+        message: "Old password is incorrect.",
+        statusCode: 401,
+      })
+    );
+  }
+
+  user.password = newPassword;
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Password updated successfully.",
+  });
+});
+
+export {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getUser,
+  updateUser,
+  updatePassword,
+};

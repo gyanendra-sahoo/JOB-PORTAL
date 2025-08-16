@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-3">
             <Link to="/" className="flex items-center space-x-2 group">
               <div className="relative">
-                <Briefcase className="h-8 w-8 text-emerald-500 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+                <img src="/images/logo.png" alt="" className="h-12" />
                 <div className="absolute inset-0 bg-emerald-500/20 blur-md group-hover:bg-emerald-400/30 transition-colors duration-300"></div>
               </div>
               <span

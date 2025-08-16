@@ -17,9 +17,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Briefcase
-                className={`h-8 w-8 ${isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}`}
-              />
+              <img src="/images/logo.png" alt="" className='h-12' />
               <span
                 className={`text-xl font-bold ${
                   isDarkMode ? 'text-white' : 'text-slate-900'

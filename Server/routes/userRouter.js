@@ -1,5 +1,12 @@
 import { Router } from "express";
-import { getUser, loginUser, logoutUser, registerUser, updateUser } from "../controllers/userController.js";
+import {
+  getUser,
+  loginUser,
+  logoutUser,
+  registerUser,
+  updatePassword,
+  updateUser,
+} from "../controllers/userController.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 import { upload } from "../middleware/multer.js";
 
@@ -16,5 +23,7 @@ userRouter.route("/profile").get(verifyToken, getUser);
 userRouter
   .route("/profile/edit")
   .put(upload.single("resume"), verifyToken, updateUser);
+
+userRouter.route("/update/password").put(verifyToken, updatePassword);
 
 export default userRouter;
