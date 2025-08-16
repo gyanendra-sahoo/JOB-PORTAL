@@ -19,6 +19,7 @@ import api from "../services/api";
 const Profile = () => {
   const { isDarkMode } = useSelector((state) => state.theme);
   const token = useSelector((state) => state.auth.token);
+  const { user } = useSelector((state) => state.auth);
 
   const [profileData, setProfileData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -282,6 +283,11 @@ const Profile = () => {
               userData.name
             )}
           </h1>
+          
+          <div className="flex justify-center items-center space-x-2 mb-4">
+            <p className="text-lg opacity-80">Role:</p>
+          <p className="text-lg opacity-80">{ user?.role }</p>
+          </div>
 
           <div className="max-w-2xl mx-auto">
             {isEditing ? (

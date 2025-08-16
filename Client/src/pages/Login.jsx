@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Mail, Lock, Eye, EyeOff, Briefcase } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "./../redux/slices/authSlice.js";
 
@@ -121,8 +121,7 @@ const Login = () => {
           <div className="flex justify-center ">
             {" "}
             <div className="relative">
-                            <Briefcase className="h-12 w-12 text-emerald-500" />
-                           {" "}
+              <img src="/images/logo.png" alt="logo" className="h-12" />{" "}
               <div className="absolute inset-0 bg-emerald-500/20 blur-md"></div>
                          {" "}
             </div>
@@ -134,9 +133,9 @@ const Login = () => {
               isDarkMode
                 ? "from-white to-slate-300"
                 : "from-slate-800 to-slate-600"
-            } bg-clip-text text-transparent mb-2`}
+            } bg-clip-text text-transparent mb-2 text-center`}
           >
-                        Welcome Back          {" "}
+                        Welcome Back          
           </h2>
                    {" "}
           <p
@@ -197,10 +196,9 @@ const Login = () => {
                   <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
                                     {formErrors.email}               {" "}
                 </p>
-              )}
-              {" "}
+              )}{" "}
             </div>
-          {/* Password Field */}{" "}
+            {/* Password Field */}{" "}
             <div>
               {" "}
               <label

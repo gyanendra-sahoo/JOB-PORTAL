@@ -7,7 +7,6 @@ import {
   Phone,
   Eye,
   EyeOff,
-  Briefcase,
   MapPin,
   FileText,
 } from "lucide-react";
@@ -242,9 +241,9 @@ const Signup = () => {
 
       <div className="max-w-md w-full mx-auto relative z-10">
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-2">
             <div className="relative">
-              <Briefcase className="h-12 w-12 text-emerald-500" />
+              <img src="/images/logo.png" alt="logo" className="h-14" />
               <div className="absolute inset-0 bg-emerald-500/20 blur-md"></div>
             </div>
           </div>

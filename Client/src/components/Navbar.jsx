@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Briefcase, Sun, Moon, Menu, X, User } from "lucide-react";
+import { Sun, Moon, Menu, X, User } from "lucide-react";
 import { toggleTheme } from "../redux/slices/themeSlice.js";
 import { logoutUser } from "../redux/slices/authSlice.js";
 

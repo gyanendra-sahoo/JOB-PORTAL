@@ -1,0 +1,89 @@
+[33mcommit 169c8e9dfc564c7f8b2c6ae3d283653a2a22cafb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Sat Aug 16 09:10:16 2025 +0530
+
+    Add Update Password and Logo
+
+[33mcommit fc4c01c134e69f04d4836df4a745a1fda2325cc0[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 15 18:58:30 2025 +0530
+
+    Adding Hash Router
+
+[33mcommit d4d2e9ad523a45d98719e3a51d7a9a87c20a5b53[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 15 16:47:55 2025 +0530
+
+    Update Profile Functionality Completed
+
+[33mcommit ec2c6e47537424997068470df4092b256e638b36[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 15 15:29:20 2025 +0530
+
+    Updating the small mistakes
+
+[33mcommit a9590377d17ea7a45aabd90bb3c5620f81fb3bbf[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 15 14:59:06 2025 +0530
+
+    Add vite dependency
+
+[33mcommit 6416d2eda35a251bb442ad8d184710153ae4177d[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 15 09:57:33 2025 +0530
+
+    Adding user getProfile section
+
+[33mcommit ea1fdee7f5adf4140f2848f9bf95359adf533026[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Thu Aug 14 16:41:00 2025 +0530
+
+    Complete Login and Registation with Frontend
+
+[33mcommit bf9423eb8cf4b4f051d51e43a6d6b7cbc9f17884[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Sat Aug 9 22:35:48 2025 +0530
+
+    Adding About and Contact Page
+
+[33mcommit a081c5a63f71686eb24a876955323fc0e9b821d9[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Sat Aug 9 21:52:10 2025 +0530
+
+    Make changes in the logo name
+
+[33mcommit 94256c4757117cd0f2360cf3d6ddacba50e6ac54[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Sat Aug 9 21:21:37 2025 +0530
+
+    Fundamental UI for the website
+
+[33mcommit cdfdb602b1a9994ca548386ee7cd89abd9e96f0a[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Sat Aug 9 11:50:57 2025 +0530
+
+    Register Controller Complete
+
+[33mcommit 792a7c6fc720adc602bdf4952642095c93be3a54[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 8 10:57:30 2025 +0530
+
+    User Schema Complete
+
+[33mcommit ba81ebf1b3fd16dec6d37ad0a659c290cbff94c1[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 8 10:31:06 2025 +0530
+
+    Async Handler
+
+[33mcommit f68f9c164a31c476f4a82d4ab658dfc36cd8b06b[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 8 10:16:36 2025 +0530
+
+    Custom Error Class & Error Middleware
+
+[33mcommit 40dd6e783865db90d498f7d1f2f2e5886714ab3a[m
+Author: Gyanendra Sahoo <gyanendrasahoo577@gmail.com>
+Date:   Fri Aug 8 09:45:22 2025 +0530
+
+    Backend Setup & Database Connection
